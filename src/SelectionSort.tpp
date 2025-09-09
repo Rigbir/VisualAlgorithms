@@ -1,0 +1,27 @@
+//
+// Created by Marat on 7.09.25.
+//
+
+#pragma once
+#include <QThread>
+
+template <typename T>
+void SelectionSort<T>::sortedVec(std::vector<T>& vec, int delayMs,
+                                 std::function<void(std::vector<T>&, int i, int j)> stepCallBack) const {
+
+    for (size_t i = 0; i < vec.size() - 1; ++i) {
+        size_t minIndex = i;
+
+        for (size_t j = i + 1; j < vec.size(); ++j) {
+            if (vec[j] < vec[minIndex]) {
+                minIndex = j;
+            }
+        }
+
+        if (minIndex != i) {
+            std::swap(vec[i], vec[minIndex]);
+            stepCallBack(vec, i, minIndex);
+            QThread::msleep(delayMs);
+        }
+    }
+}

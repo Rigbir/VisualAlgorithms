@@ -1,0 +1,1299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>920</width>
+    <height>650</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>920</width>
+    <height>650</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+    background-color: qlineargradient(
+        spread:pad, 
+        x1:0, y1:0, x2:1, y2:1, 
+        /*stop:0 #1E2227, 
+       stop:1 #232831*/
+	   stop:0 #2a3038,
+	   stop:1 #242d3d
+    );
+    color: #E0E0E0;
+    font-family: &quot;Titillium Web&quot;;
+    font-size: 14px;
+	font-weight: bold;
+}
+</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout_6">
+    <item>
+     <widget class="QWidget" name="sortCanvasContainer" native="true">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>370</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QWidget {
+   border: 1px solid rgba(255, 255, 255, 0.05); /* лёгкая тонкая линия */
+    border-radius: 10px;
+    background-color: rgba(43, 47, 54, 0.3); /* слегка прозрачный фон */
+}</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_7">
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout"/>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <item>
+         <widget class="QGroupBox" name="groupBox">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>250</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QFrame, QGroupBox {
+    border: 1px solid rgba(255, 255, 255, 0.05); /* лёгкая тонкая линия */
+    border-radius: 10px;
+    background-color: rgba(43, 47, 54, 0.3); /* слегка прозрачный фон */
+}</string>
+          </property>
+          <property name="title">
+           <string/>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_3">
+           <item row="4" column="0">
+            <layout class="QHBoxLayout" name="horizontalLayout_4">
+             <item>
+              <widget class="QPushButton" name="countingBtn">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+    background-color: qlineargradient(
+        spread:pad, x1:0, y1:0, x2:0, y2:1,
+        stop:0 #2B2F36, 
+        stop:1 #232831
+    );
+    color: #E0E0E0;
+    border: 1px solid #3A3F46;
+    border-radius: 8px;
+    padding: 6px 14px;
+}
+
+/* при наведении — подсветка */
+QPushButton:hover {
+    background-color: #3A3F46;
+    color: #A6E22E;
+    border: 1px solid #C0C0C0;
+}
+
+/* при нажатии */
+QPushButton:pressed {
+    background-color: #808080;
+    color: #A6E22E;
+    border: 1px solid #C0C0C0;
+}
+
+QPushButton:checked {
+    background-color: #4CAF50;   /* зелёный фон */
+    color: white;
+    border: 1px solid #C0C0C0;
+}
+
+/* pressed + checked — чтобы не перекрывался :checked при удержании */
+QPushButton:checked:pressed {
+    background-color: #45A049;   /* чуть темнее зелёного */
+    color: white;
+}</string>
+               </property>
+               <property name="text">
+                <string>Counting Sort</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="radixBtn">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+    background-color: qlineargradient(
+        spread:pad, x1:0, y1:0, x2:0, y2:1,
+        stop:0 #2B2F36, 
+        stop:1 #232831
+    );
+    color: #E0E0E0;
+    border: 1px solid #3A3F46;
+    border-radius: 8px;
+    padding: 6px 14px;
+}
+
+/* при наведении — подсветка */
+QPushButton:hover {
+    background-color: #3A3F46;
+    color: #A6E22E;
+    border: 1px solid #C0C0C0;
+}
+
+/* при нажатии */
+QPushButton:pressed {
+    background-color: #808080;
+    color: #A6E22E;
+    border: 1px solid #C0C0C0;
+}
+
+QPushButton:checked {
+    background-color: #4CAF50;   /* зелёный фон */
+    color: white;
+    border: 1px solid #C0C0C0;
+}
+
+/* pressed + checked — чтобы не перекрывался :checked при удержании */
+QPushButton:checked:pressed {
+    background-color: #45A049;   /* чуть темнее зелёного */
+    color: white;
+}</string>
+               </property>
+               <property name="text">
+                <string>Redix Sort</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="shellBtn">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+    background-color: qlineargradient(
+        spread:pad, x1:0, y1:0, x2:0, y2:1,
+        stop:0 #2B2F36, 
+        stop:1 #232831
+    );
+    color: #E0E0E0;
+    border: 1px solid #3A3F46;
+    border-radius: 8px;
+    padding: 6px 14px;
+}
+
+/* при наведении — подсветка */
+QPushButton:hover {
+    background-color: #3A3F46;
+    color: #A6E22E;
+    border: 1px solid #C0C0C0;
+}
+
+/* при нажатии */
+QPushButton:pressed {
+    background-color: #808080;
+    color: #A6E22E;
+    border: 1px solid #C0C0C0;
+}
+
+QPushButton:checked {
+    background-color: #4CAF50;   /* зелёный фон */
+    color: white;
+    border: 1px solid #C0C0C0;
+}
+
+/* pressed + checked — чтобы не перекрывался :checked при удержании */
+QPushButton:checked:pressed {
+    background-color: #45A049;   /* чуть темнее зелёного */
+    color: white;
+}</string>
+               </property>
+               <property name="text">
+                <string> Shell Sort </string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="2" column="0">
+            <layout class="QHBoxLayout" name="horizontalLayout_5">
+             <item>
+              <widget class="QPushButton" name="shakerBtn">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>1</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+    background-color: qlineargradient(
+        spread:pad, x1:0, y1:0, x2:0, y2:1,
+        stop:0 #2B2F36, 
+        stop:1 #232831
+    );
+    color: #E0E0E0;
+    border: 1px solid #3A3F46;
+    border-radius: 8px;
+    padding: 6px 14px;
+}
+
+/* при наведении — подсветка */
+QPushButton:hover {
+    background-color: #3A3F46;
+    color: #A6E22E;
+    border: 1px solid #C0C0C0;
+}
+
+/* при нажатии */
+QPushButton:pressed {
+    background-color: #808080;
+    color: #A6E22E;
+    border: 1px solid #C0C0C0;
+}
+
+QPushButton:checked {
+    background-color: #4CAF50;   /* зелёный фон */
+    color: white;
+    border: 1px solid #C0C0C0;
+}
+
+/* pressed + checked — чтобы не перекрывался :checked при удержании */
+QPushButton:checked:pressed {
+    background-color: #45A049;   /* чуть темнее зелёного */
+    color: white;
+}</string>
+               </property>
+               <property name="text">
+                <string>Shaker Sort</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="gnomeBtn">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>1</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+    background-color: qlineargradient(
+        spread:pad, x1:0, y1:0, x2:0, y2:1,
+        stop:0 #2B2F36, 
+        stop:1 #232831
+    );
+    color: #E0E0E0;
+    border: 1px solid #3A3F46;
+    border-radius: 8px;
+    padding: 6px 14px;
+}
+
+/* при наведении — подсветка */
+QPushButton:hover {
+    background-color: #3A3F46;
+    color: #A6E22E;
+    border: 1px solid #C0C0C0;
+}
+
+/* при нажатии */
+QPushButton:pressed {
+    background-color: #808080;
+    color: #A6E22E;
+    border: 1px solid #C0C0C0;
+}
+
+QPushButton:checked {
+    background-color: #4CAF50;   /* зелёный фон */
+    color: white;
+    border: 1px solid #C0C0C0;
+}
+
+/* pressed + checked — чтобы не перекрывался :checked при удержании */
+QPushButton:checked:pressed {
+    background-color: #45A049;   /* чуть темнее зелёного */
+    color: white;
+}</string>
+               </property>
+               <property name="text">
+                <string>Gnome Sort</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="oddEvenBtn">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>1</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+    background-color: qlineargradient(
+        spread:pad, x1:0, y1:0, x2:0, y2:1,
+        stop:0 #2B2F36, 
+        stop:1 #232831
+    );
+    color: #E0E0E0;
+    border: 1px solid #3A3F46;
+    border-radius: 8px;
+    padding: 6px 14px;
+}
+
+/* при наведении — подсветка */
+QPushButton:hover {
+    background-color: #3A3F46;
+    color: #A6E22E;
+    border: 1px solid #C0C0C0;
+}
+
+/* при нажатии */
+QPushButton:pressed {
+    background-color: #808080;
+    color: #A6E22E;
+    border: 1px solid #C0C0C0;
+}
+
+QPushButton:checked {
+    background-color: #4CAF50;   /* зелёный фон */
+    color: white;
+    border: 1px solid #C0C0C0;
+}
+
+/* pressed + checked — чтобы не перекрывался :checked при удержании */
+QPushButton:checked:pressed {
+    background-color: #45A049;   /* чуть темнее зелёного */
+    color: white;
+}</string>
+               </property>
+               <property name="text">
+                <string>Odd Even Sort</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="3" column="0">
+            <layout class="QHBoxLayout" name="horizontalLayout_3">
+             <item>
+              <widget class="QPushButton" name="mergeBtn">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+    background-color: qlineargradient(
+        spread:pad, x1:0, y1:0, x2:0, y2:1,
+        stop:0 #2B2F36, 
+        stop:1 #232831
+    );
+    color: #E0E0E0;
+    border: 1px solid #3A3F46;
+    border-radius: 8px;
+    padding: 6px 14px;
+}
+
+/* при наведении — подсветка */
+QPushButton:hover {
+    background-color: #3A3F46;
+    color: #A6E22E;
+    border: 1px solid #C0C0C0;
+}
+
+/* при нажатии */
+QPushButton:pressed {
+    background-color: #808080;
+    color: #A6E22E;
+    border: 1px solid #C0C0C0;
+}
+
+QPushButton:checked {
+    background-color: #4CAF50;   /* зелёный фон */
+    color: white;
+    border: 1px solid #C0C0C0;
+}
+
+/* pressed + checked — чтобы не перекрывался :checked при удержании */
+QPushButton:checked:pressed {
+    background-color: #45A049;   /* чуть темнее зелёного */
+    color: white;
+}</string>
+               </property>
+               <property name="text">
+                <string>Merge Sort</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="quickBtn">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+    background-color: qlineargradient(
+        spread:pad, x1:0, y1:0, x2:0, y2:1,
+        stop:0 #2B2F36, 
+        stop:1 #232831
+    );
+    color: #E0E0E0;
+    border: 1px solid #3A3F46;
+    border-radius: 8px;
+    padding: 6px 14px;
+}
+
+/* при наведении — подсветка */
+QPushButton:hover {
+    background-color: #3A3F46;
+    color: #A6E22E;
+    border: 1px solid #C0C0C0;
+}
+
+/* при нажатии */
+QPushButton:pressed {
+    background-color: #808080;
+    color: #A6E22E;
+    border: 1px solid #C0C0C0;
+}
+
+QPushButton:checked {
+    background-color: #4CAF50;   /* зелёный фон */
+    color: white;
+    border: 1px solid #C0C0C0;
+}
+
+/* pressed + checked — чтобы не перекрывался :checked при удержании */
+QPushButton:checked:pressed {
+    background-color: #45A049;   /* чуть темнее зелёного */
+    color: white;
+}</string>
+               </property>
+               <property name="text">
+                <string>Quick Sort</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="heapBtn">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+    background-color: qlineargradient(
+        spread:pad, x1:0, y1:0, x2:0, y2:1,
+        stop:0 #2B2F36, 
+        stop:1 #232831
+    );
+    color: #E0E0E0;
+    border: 1px solid #3A3F46;
+    border-radius: 8px;
+    padding: 6px 14px;
+}
+
+/* при наведении — подсветка */
+QPushButton:hover {
+    background-color: #3A3F46;
+    color: #A6E22E;
+    border: 1px solid #C0C0C0;
+}
+
+/* при нажатии */
+QPushButton:pressed {
+    background-color: #808080;
+    color: #A6E22E;
+    border: 1px solid #C0C0C0;
+}
+
+QPushButton:checked {
+    background-color: #4CAF50;   /* зелёный фон */
+    color: white;
+    border: 1px solid #C0C0C0;
+}
+
+/* pressed + checked — чтобы не перекрывался :checked при удержании */
+QPushButton:checked:pressed {
+    background-color: #45A049;   /* чуть темнее зелёного */
+    color: white;
+}</string>
+               </property>
+               <property name="text">
+                <string>  Heap Sort  </string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="1" column="0">
+            <layout class="QHBoxLayout" name="horizontalLayout_9">
+             <item>
+              <widget class="QPushButton" name="bubbleBtn">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+    background-color: qlineargradient(
+        spread:pad, x1:0, y1:0, x2:0, y2:1,
+        stop:0 #2B2F36, 
+        stop:1 #232831
+    );
+    color: #E0E0E0;
+    border: 1px solid #3A3F46;
+    border-radius: 8px;
+    padding: 6px 14px;
+}
+
+/* при наведении — подсветка */
+QPushButton:hover {
+    background-color: #3A3F46;
+    color: #A6E22E;
+    border: 1px solid #C0C0C0;
+}
+
+/* при нажатии */
+QPushButton:pressed {
+    background-color: #808080;
+    color: #A6E22E;
+    border: 1px solid #C0C0C0;
+}
+
+QPushButton:checked {
+    background-color: #4CAF50;   /* зелёный фон */
+    color: white;
+    border: 1px solid #C0C0C0;
+}
+
+/* pressed + checked — чтобы не перекрывался :checked при удержании */
+QPushButton:checked:pressed {
+    background-color: #45A049;   /* чуть темнее зелёного */
+    color: white;
+}</string>
+               </property>
+               <property name="text">
+                <string>  Bubble Sort  </string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="selectionBtn">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+    background-color: qlineargradient(
+        spread:pad, x1:0, y1:0, x2:0, y2:1,
+        stop:0 #2B2F36, 
+        stop:1 #232831
+    );
+    color: #E0E0E0;
+    border: 1px solid #3A3F46;
+    border-radius: 8px;
+    padding: 6px 14px;
+}
+
+/* при наведении — подсветка */
+QPushButton:hover {
+    background-color: #3A3F46;
+    color: #A6E22E;
+    border: 1px solid #C0C0C0;
+}
+
+/* при нажатии */
+QPushButton:pressed {
+    background-color: #808080;
+    color: #A6E22E;
+    border: 1px solid #C0C0C0;
+}
+
+QPushButton:checked {
+    background-color: #4CAF50;   /* зелёный фон */
+    color: white;
+    border: 1px solid #C0C0C0;
+}
+
+/* pressed + checked — чтобы не перекрывался :checked при удержании */
+QPushButton:checked:pressed {
+    background-color: #45A049;   /* чуть темнее зелёного */
+    color: white;
+}</string>
+               </property>
+               <property name="text">
+                <string>Selection Sort</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="insertionBtn">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+    background-color: qlineargradient(
+        spread:pad, x1:0, y1:0, x2:0, y2:1,
+        stop:0 #2B2F36, 
+        stop:1 #232831
+    );
+    color: #E0E0E0;
+    border: 1px solid #3A3F46;
+    border-radius: 8px;
+    padding: 6px 14px;
+}
+
+/* при наведении — подсветка */
+QPushButton:hover {
+    background-color: #3A3F46;
+    color: #A6E22E;
+    border: 1px solid #C0C0C0;
+}
+
+/* при нажатии */
+QPushButton:pressed {
+    background-color: #808080;
+    color: #A6E22E;
+    border: 1px solid #C0C0C0;
+}
+
+QPushButton:checked {
+    background-color: #4CAF50;   /* зелёный фон */
+    color: white;
+    border: 1px solid #C0C0C0;
+}
+
+/* pressed + checked — чтобы не перекрывался :checked при удержании */
+QPushButton:checked:pressed {
+    background-color: #45A049;   /* чуть темнее зелёного */
+    color: white;
+}</string>
+               </property>
+               <property name="text">
+                <string>Insertion Sort </string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_6">
+        <property name="sizeConstraint">
+         <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
+        </property>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_5">
+          <item>
+           <widget class="QGroupBox" name="groupBox_2">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>250</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QFrame, QGroupBox {
+    border: 1px solid rgba(255, 255, 255, 0.05); /* лёгкая тонкая линия */
+    border-radius: 10px;
+    background-color: rgba(43, 47, 54, 0.3); /* слегка прозрачный фон */
+}</string>
+            </property>
+            <property name="title">
+             <string/>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_2">
+             <item row="3" column="0">
+              <widget class="QPushButton" name="stopBtn">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>90</width>
+                 <height>50</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+    background-color: qlineargradient(
+        spread:pad, x1:0, y1:0, x2:0, y2:1,
+        stop:0 #2B2F36, 
+        stop:1 #232831
+    );
+    color: #E0E0E0;
+    border: 1px solid #3A3F46;
+    border-radius: 8px;
+    padding: 6px 14px;
+}
+
+/* при наведении — подсветка */
+QPushButton:hover {
+    background-color: #3A3F46;
+    color: #A6E22E;
+    border: 1px solid #C0C0C0;
+}
+
+/* при нажатии */
+QPushButton:pressed {
+    background-color: #808080;
+    color: #A6E22E;
+    border: 1px solid #C0C0C0;
+}
+
+QPushButton:checked {
+    background-color: red;   /* зелёный фон */
+    color: white;
+    border: 1px solid #C0C0C0;
+}
+
+/* pressed + checked — чтобы не перекрывался :checked при удержании */
+QPushButton:checked:pressed {
+    background-color: #45A049;   /* чуть темнее зелёного */
+    color: white;
+}</string>
+               </property>
+               <property name="text">
+                <string>Stop</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QPushButton" name="shuffleBtn">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>90</width>
+                 <height>50</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+    background-color: qlineargradient(
+        spread:pad, x1:0, y1:0, x2:0, y2:1,
+        stop:0 #2B2F36, 
+        stop:1 #232831
+    );
+    color: #E0E0E0;
+    border: 1px solid #3A3F46;
+    border-radius: 8px;
+    padding: 6px 14px;
+}
+
+/* при наведении — подсветка */
+QPushButton:hover {
+    background-color: #3A3F46;
+    color: #A6E22E;
+    border: 1px solid #C0C0C0;
+}
+
+/* при нажатии */
+QPushButton:pressed {
+    background-color: #808080;
+    color: #A6E22E;
+    border: 1px solid #C0C0C0;
+}</string>
+               </property>
+               <property name="text">
+                <string>Shuffle</string>
+               </property>
+               <property name="checkable">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QPushButton" name="startBtn">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>50</width>
+                 <height>50</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+    background-color: qlineargradient(
+        spread:pad, x1:0, y1:0, x2:0, y2:1,
+        stop:0 #2B2F36, 
+        stop:1 #232831
+    );
+    color: #E0E0E0;
+    border: 1px solid #3A3F46;
+    border-radius: 8px;
+    padding: 6px 14px;
+}
+
+/* при наведении — подсветка */
+QPushButton:hover {
+    background-color: #3A3F46;
+    color: #A6E22E;
+    border: 1px solid #C0C0C0;
+}
+
+/* при нажатии */
+QPushButton:pressed {
+    background-color: #808080;
+    color: #A6E22E;
+    border: 1px solid #C0C0C0;
+}
+
+QPushButton:checked {
+    background-color: #4CAF50;   /* зелёный фон */
+    color: white;
+    border: 1px solid #C0C0C0;
+}
+
+/* pressed + checked — чтобы не перекрывался :checked при удержании */
+QPushButton:checked:pressed {
+    background-color: #45A049;   /* чуть темнее зелёного */
+    color: white;
+}</string>
+               </property>
+               <property name="text">
+                <string>Start</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1" rowspan="3">
+              <layout class="QGridLayout" name="gridLayout">
+               <item row="0" column="0">
+                <layout class="QHBoxLayout" name="horizontalLayout_7">
+                 <item>
+                  <widget class="QLabel" name="label1">
+                   <property name="maximumSize">
+                    <size>
+                     <width>100</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QLabel {
+    background-color: rgba(43, 47, 54, 0.8);
+    border: 1px solid #3A3F46;
+    border-radius: 6px;
+    padding: 4px 8px;
+    color: #E0E0E0;
+    selection-background-color: #A6E22E;
+}
+
+QLabel:focus {
+    border: 1px solid #A6E22E;
+}
+</string>
+                   </property>
+                   <property name="text">
+                    <string>Array Size</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="horizontalSpacer">
+                   <property name="orientation">
+                    <enum>Qt::Orientation::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="arrSizeLabel">
+                   <property name="maximumSize">
+                    <size>
+                     <width>100</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QLabel {
+    background-color: rgba(43, 47, 54, 0.8);
+    border: 1px solid #3A3F46;
+    border-radius: 6px;
+    padding: 4px 8px;
+    color: #E0E0E0;
+    selection-background-color: #A6E22E;
+}
+
+QLabel:focus {
+    border: 1px solid #A6E22E;
+}
+</string>
+                   </property>
+                   <property name="text">
+                    <string>0 bars</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item row="1" column="0">
+                <widget class="QSlider" name="arrSizeSlider">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QSlider::groove:horizontal {
+    height: 13px; /* жирная линия */
+    background: #2B2F36;
+    border: 1px solid #3A3F46;
+    border-radius: 5px;
+}
+
+/* активная часть (слева от ползунка) */
+QSlider::sub-page:horizontal {
+    background: #696969;
+    border-radius: 5px;
+}
+
+/* неактивная часть (справа от ползунка) */
+QSlider::add-page:horizontal {
+    background: #3A3F46; /* серый цвет */
+    border-radius: 5px;
+}
+
+/* сам ползунок */
+QSlider::handle:horizontal {
+    background: #E0E0E0;   /* светлый кружок */
+    width: 18px;
+    height: 18px;
+    border-radius: 9px;
+    margin: -5px 0; /* чтобы кружок лег поверх линии */
+    border: 2px solid #708090; /* тонкая зелёная обводка */
+}</string>
+                 </property>
+                 <property name="maximum">
+                  <number>290</number>
+                 </property>
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <layout class="QHBoxLayout" name="horizontalLayout_8">
+                 <item>
+                  <widget class="QLabel" name="label2">
+                   <property name="minimumSize">
+                    <size>
+                     <width>90</width>
+                     <height>0</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>100</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QLabel {
+    background-color: rgba(43, 47, 54, 0.8);
+    border: 1px solid #3A3F46;
+    border-radius: 6px;
+    padding: 4px 8px;
+    color: #E0E0E0;
+    selection-background-color: #A6E22E;
+}
+
+QLabel:focus {
+    border: 1px solid #A6E22E;
+}
+</string>
+                   </property>
+                   <property name="text">
+                    <string>Delay</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="horizontalSpacer_2">
+                   <property name="orientation">
+                    <enum>Qt::Orientation::Horizontal</enum>
+                   </property>
+                   <property name="sizeType">
+                    <enum>QSizePolicy::Policy::Expanding</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>200</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="delayLabel">
+                   <property name="minimumSize">
+                    <size>
+                     <width>80</width>
+                     <height>0</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>100</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QLabel {
+    background-color: rgba(43, 47, 54, 0.8);
+    border: 1px solid #3A3F46;
+    border-radius: 6px;
+    padding: 4px 8px;
+    color: #E0E0E0;
+    selection-background-color: #A6E22E;
+}
+
+QLabel:focus {
+    border: 1px solid #A6E22E;
+}
+</string>
+                   </property>
+                   <property name="text">
+                    <string>10 ms</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item row="3" column="0">
+                <widget class="QSlider" name="delaySlider">
+                 <property name="styleSheet">
+                  <string notr="true">QSlider::groove:horizontal {
+    height: 13px; /* жирная линия */
+    background: #2B2F36;
+    border: 1px solid #3A3F46;
+    border-radius: 5px;
+}
+
+/* активная часть (слева от ползунка) */
+QSlider::sub-page:horizontal {
+    background: #A9A9A9;
+    border-radius: 5px;
+}
+
+/* неактивная часть (справа от ползунка) */
+QSlider::add-page:horizontal {
+    background: #3A3F46; /* серый цвет */
+    border-radius: 5px;
+}
+
+/* сам ползунок */
+QSlider::handle:horizontal {
+    background: #E0E0E0;   /* светлый кружок */
+    width: 18px;
+    height: 18px;
+    border-radius: 9px;
+    margin: -5px 0; /* чтобы кружок лег поверх линии */
+    border: 2px solid #2F4F4F; /* тонкая зелёная обводка */
+}</string>
+                 </property>
+                 <property name="minimum">
+                  <number>10</number>
+                 </property>
+                 <property name="maximum">
+                  <number>100</number>
+                 </property>
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
