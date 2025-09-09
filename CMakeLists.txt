@@ -11,30 +11,19 @@ qt_standard_project_setup()
 
 set(CMAKE_AUTOUIC_SEARCH_PATHS ${CMAKE_SOURCE_DIR}/ui)
 
+file(GLOB SORT_TEMPLATE_AND_HEADERS_FILES
+    "src/sortTemplates/*.tpp"
+    "include/sortHeaders/*.h"
+)
+
 qt_add_executable(visualAlgo
+    ${SORT_TEMPLATE_AND_HEADERS_FILES}
     src/main.cpp
     src/mainwindow.cpp
     src/SortCanvas.cpp
-    src/BubbleSort.tpp
-    src/CountingSort.tpp
-    src/HeapSort.tpp
-    src/InsertionSort.tpp
-    src/MergeSort.tpp
-    src/QuickSort.tpp
-    src/SelectionSort.tpp
-    src/ShakerSort.tpp
 
     include/mainwindow.h
     include/SortCanvas.h
-    include/BubbleSort.h
-    include/CountingSort.h
-    include/HeapSort.h
-    include/InsertionSort.h
-    include/MergeSort.h
-    include/QuickSort.h
-    include/SelectionSort.h
-    include/ShakerSort.h
-    include/SortAlgorithm.h
 
     ui/mainwindow.ui)
 
@@ -42,4 +31,4 @@ target_link_libraries(visualAlgo PRIVATE
     Qt::Core
     Qt::Widgets)
 
-target_include_directories(visualAlgo PRIVATE include src ui)
+target_include_directories(visualAlgo PRIVATE include src ui include/sortHeaders src/sortTemplates)
