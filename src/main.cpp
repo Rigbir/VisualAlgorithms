@@ -4,13 +4,17 @@
 
 #include "mainwindow.h"
 #include <QApplication>
+#include <QIcon>
 
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
+    QApplication app(argc, argv);
 
-    MainWindow w;
-    w.show();
+    app.setWindowIcon(QIcon(":/appIcon/icon.png"));
 
-    return a.exec();
+    MainWindow window;
+    window.setWindowTitle("Visual Algorithms");
+    window.show();
+
+    return app.exec();
 }
