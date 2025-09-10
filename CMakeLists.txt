@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.19)
-project(visualAlgo LANGUAGES CXX)
+project(visualAlgorithms LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -16,7 +16,7 @@ file(GLOB SORT_TEMPLATE_AND_HEADERS_FILES
     "include/sortHeaders/*.h"
 )
 
-qt_add_executable(visualAlgo
+qt_add_executable(visualAlgorithms
     ${SORT_TEMPLATE_AND_HEADERS_FILES}
     src/main.cpp
     src/mainwindow.cpp
@@ -27,8 +27,8 @@ qt_add_executable(visualAlgo
 
     ui/mainwindow.ui)
 
-target_link_libraries(visualAlgo PRIVATE
+target_link_libraries(visualAlgorithms PRIVATE
     Qt::Core
     Qt::Widgets)
 
-target_include_directories(visualAlgo PRIVATE include src ui include/sortHeaders src/sortTemplates)
+target_include_directories(visualAlgorithms PRIVATE include src ui include/sortHeaders src/sortTemplates)
