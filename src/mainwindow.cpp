@@ -91,8 +91,8 @@ void MainWindow::initButtons() {
     connect(ui->selectionBtn,   &QPushButton::clicked, this, [this](){ currentSorter = &selectionSorter; });
     connect(ui->insertionBtn,   &QPushButton::clicked, this, [this](){ currentSorter = &insertionSorter; });
     connect(ui->shakerBtn,      &QPushButton::clicked, this, [this](){ currentSorter = &shakerSorter;    });
-    //connect(ui->gnomeBtn,       &QPushButton::clicked, this, [this](){ currentSorter = &; });
-    connect(ui->oddEvenBtn,     &QPushButton::clicked, this, [this](){ currentSorter = &OddEvenSorter;   });
+    connect(ui->gnomeBtn,       &QPushButton::clicked, this, [this](){ currentSorter = &gnomeSorter;     });
+    connect(ui->oddEvenBtn,     &QPushButton::clicked, this, [this](){ currentSorter = &oddEvenSorter;   });
     connect(ui->mergeBtn,       &QPushButton::clicked, this, [this](){ currentSorter = &mergeSorter;     });
     connect(ui->quickBtn,       &QPushButton::clicked, this, [this](){ currentSorter = &quickSorter;     });
     connect(ui->heapBtn,        &QPushButton::clicked, this, [this](){ currentSorter = &heapSorter;      });
