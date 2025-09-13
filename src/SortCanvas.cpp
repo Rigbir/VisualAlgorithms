@@ -27,7 +27,7 @@ void SortCanvas::paintEvent(QPaintEvent*) {
     for (size_t i = 0; i < data.size(); ++i) {
         int h = (height() * data[i]) / maxVal;
 
-        QColor color = QColor("#808080");
+        QColor color = QColor("#D3D3D3");//808080 687090
 
         if (isSorted) {
             color = QColor("#A6E22E");

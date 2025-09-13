@@ -9,6 +9,7 @@
 #include "SortCanvas.h"
 #include "SortAlgorithm.h"
 #include "BubbleSort.h"
+#include "OddEvenSort.h"
 #include "CountingSort.h"
 #include "HeapSort.h"
 #include "InsertionSort.h"
@@ -43,6 +44,7 @@ private:
     SortAlgorithm<int>* currentSorter = nullptr;
     BubbleSort<int>     bubbleSorter;
     CountingSort<int>   countingSorter;
+    OddEvenSort<int>    OddEvenSorter;
     HeapSort<int>       heapSorter;
     InsertionSort<int>  insertionSorter;
     MergeSort<int>      mergeSorter;
