@@ -11,6 +11,7 @@
 #include "BubbleSort.h"
 #include "OddEvenSort.h"
 #include "GnomeSort.h"
+#include "ShellSort.h"
 #include "CountingSort.h"
 #include "HeapSort.h"
 #include "InsertionSort.h"
@@ -47,6 +48,7 @@ private:
     CountingSort<int>   countingSorter;
     OddEvenSort<int>    oddEvenSorter;
     GnomeSort<int>      gnomeSorter;
+    ShellSort<int>      shellSorter;
     HeapSort<int>       heapSorter;
     InsertionSort<int>  insertionSorter;
     MergeSort<int>      mergeSorter;

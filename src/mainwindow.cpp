@@ -98,7 +98,7 @@ void MainWindow::initButtons() {
     connect(ui->heapBtn,        &QPushButton::clicked, this, [this](){ currentSorter = &heapSorter;      });
     connect(ui->countingBtn,    &QPushButton::clicked, this, [this](){ currentSorter = &countingSorter;  });
     //connect(ui->radixBtn,       &QPushButton::clicked, this, [this](){ currentSorter = &; });
-    //connect(ui->shellBtn,       &QPushButton::clicked, this, [this](){ currentSorter = &; });
+    connect(ui->shellBtn,       &QPushButton::clicked, this, [this](){ currentSorter = &shellSorter;     });
 }
 
 void MainWindow::buttonsGroup() {
