@@ -24,7 +24,11 @@ The easiest way to use Visual Algorithms is to download the **pre-built app**:
 open VisualAlgorithms.app
 ```
 
+---
+
 ![Sorting Visualization](VisualAlgorithms.gif)
+
+---
 
 ## License
 
