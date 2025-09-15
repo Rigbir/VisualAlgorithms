@@ -53,9 +53,12 @@ void MainWindow::onStartButton() {
             });
             QThread::msleep(delayMs);
         });
-        QMetaObject::invokeMethod(canvas, [this]{
-            canvas->setData(data, -1, -1, true);
-        });
+
+        if (!stopRequested) {
+            QMetaObject::invokeMethod(canvas, [this]{
+                canvas->setData(data, -1, -1, true);
+            });
+        }
     });
     sortThread->start();
     connect(sortThread, &QThread::finished, sortThread, &QObject::deleteLater);

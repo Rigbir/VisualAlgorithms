@@ -34,7 +34,6 @@ int QuickSort<T>::partition(std::vector<T>& vec, const int low, const int high, 
             ++i;
             std::swap(vec[i], vec[j]);
             stepCallBack(vec, i, j);
-            QThread::msleep(delayMs);
         }
     }
 
