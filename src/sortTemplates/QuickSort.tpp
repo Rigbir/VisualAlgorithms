@@ -19,6 +19,7 @@ void QuickSort<T>::quick(std::vector<T>& vec, const int low, const int high, int
                          std::function<void(std::vector<T>&, int i, int j)> stepCallBack,
                          const std::atomic_bool& stopRequested) const {
     if (low < high) {
+        if (stopRequested) return;
         const size_t p = partition(vec, low, high, delayMs, stepCallBack, stopRequested);
         quick(vec, low, p - 1, delayMs, stepCallBack, stopRequested);
         quick(vec, p + 1, high, delayMs, stepCallBack, stopRequested);

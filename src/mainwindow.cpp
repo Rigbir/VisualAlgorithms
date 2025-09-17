@@ -118,7 +118,7 @@ void MainWindow::switchSorter(SortAlgorithm<int>* sorter) {
             sortThread = nullptr;
             currentSorter = sorter;
             shuffleData(ui->arrSizeSlider->value());
-        }, Qt::QueuedConnection);
+        });
     } else {
         currentSorter = sorter;
         shuffleData(ui->arrSizeSlider->value());

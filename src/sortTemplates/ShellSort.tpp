@@ -11,7 +11,9 @@ void ShellSort<T>::sortedVec(std::vector<T>& vec, int delayMs,
                              const std::atomic_bool& stopRequested) const {
 
     for (int gap = vec.size() / 2; gap > 0; gap /= 2) {
+        if (stopRequested) return;
         for (int i = gap; i < vec.size(); ++i) {
+            if (stopRequested) return;
             int temp = vec[i];
             int j;
 

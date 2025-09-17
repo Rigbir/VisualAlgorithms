@@ -15,9 +15,11 @@ void ShakerSort<T>::sortedVec(std::vector<T>& vec, int delayMs,
     size_t right = vec.size() - 1;
 
     while (sort) {
+        if (stopRequested) return;
         sort = false;
 
         for (size_t i = left; i < right; ++i) {
+            if (stopRequested) return;
             if (vec[i] > vec[i + 1]) {
                 std::swap(vec[i], vec[i + 1]);
                 sort = true;
@@ -31,6 +33,7 @@ void ShakerSort<T>::sortedVec(std::vector<T>& vec, int delayMs,
         sort = false;
 
         for (size_t i = right; i > left; --i) {
+            if (stopRequested) return;
             if (vec[i - 1] > vec[i]) {
                 std::swap(vec[i - 1], vec[i]);
                 sort = true;

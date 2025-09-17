@@ -11,9 +11,11 @@ void SelectionSort<T>::sortedVec(std::vector<T>& vec, int delayMs,
                                  const std::atomic_bool& stopRequested) const {
 
     for (size_t i = 0; i < vec.size() - 1; ++i) {
+        if (stopRequested) return;
         size_t minIndex = i;
 
         for (size_t j = i + 1; j < vec.size(); ++j) {
+            if (stopRequested) return;
             if (vec[j] < vec[minIndex]) {
                 minIndex = j;
                 QThread::msleep(delayMs);
