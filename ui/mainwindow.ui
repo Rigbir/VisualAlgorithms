@@ -827,7 +827,8 @@ QToolTip {
 	border-radius: 1px; 
 	padding: 4px 8px; 
 	font-size: 14px;
- }</string>
+ }
+</string>
                </property>
                <property name="text">
                 <string>  Bubble Sort  </string>
