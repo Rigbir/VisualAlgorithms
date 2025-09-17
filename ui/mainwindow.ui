@@ -30,8 +30,6 @@
     background-color: qlineargradient(
         spread:pad, 
         x1:0, y1:0, x2:1, y2:1, 
-        /*stop:0 #1E2227, 
-       stop:1 #232831*/
 	   stop:0 #2a3038,
 	   stop:1 #242d3d
     );
@@ -54,9 +52,22 @@
       </property>
       <property name="styleSheet">
        <string notr="true">QWidget {
-   border: 1px solid rgba(255, 255, 255, 0.05); /* лёгкая тонкая линия */
+/*
+   border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 10px;
-    background-color: rgba(43, 47, 54, 0.3); /* слегка прозрачный фон */
+    background-color: rgba(43, 47, 54, 0.3);
+*/
+ border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    background-color: rgba(43, 47, 54, 0.3);
+    /* subtle grid через линейный градиент */
+    background-image: repeating-linear-gradient(
+        90deg,
+        rgba(255,255,255,0.02) 0px,
+        rgba(255,255,255,0.02) 1px,
+        transparent 1px,
+        transparent 20px
+    );
 }</string>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -111,6 +122,9 @@
                  <height>40</height>
                 </size>
                </property>
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Count occurrences and place elements&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
                <property name="styleSheet">
                 <string notr="true">QPushButton {
     background-color: qlineargradient(
@@ -133,7 +147,7 @@ QPushButton:hover {
 
 /* при нажатии */
 QPushButton:pressed {
-    background-color: #808080;
+    background-color: #4B4F56;
     color: #A6E22E;
     border: 1px solid #C0C0C0;
 }
@@ -148,7 +162,15 @@ QPushButton:checked {
 QPushButton:checked:pressed {
     background-color: #45A049;   /* чуть темнее зелёного */
     color: white;
-}</string>
+}
+
+QToolTip { 
+	background-color: #2B2F36; 
+	color: #E0E0E0; border: 1px solid #3A3F46; 
+	border-radius: 1px; 
+	padding: 4px 8px; 
+	font-size: 14px;
+ }</string>
                </property>
                <property name="text">
                 <string>Counting Sort</string>
@@ -172,6 +194,9 @@ QPushButton:checked:pressed {
                  <height>40</height>
                 </size>
                </property>
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Sort digits from least to most significant&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
                <property name="styleSheet">
                 <string notr="true">QPushButton {
     background-color: qlineargradient(
@@ -194,7 +219,7 @@ QPushButton:hover {
 
 /* при нажатии */
 QPushButton:pressed {
-    background-color: #808080;
+    background-color: #4B4F56;
     color: #A6E22E;
     border: 1px solid #C0C0C0;
 }
@@ -209,7 +234,15 @@ QPushButton:checked {
 QPushButton:checked:pressed {
     background-color: #45A049;   /* чуть темнее зелёного */
     color: white;
-}</string>
+}
+
+QToolTip { 
+	background-color: #2B2F36; 
+	color: #E0E0E0; border: 1px solid #3A3F46; 
+	border-radius: 1px; 
+	padding: 4px 8px; 
+	font-size: 14px;
+ }</string>
                </property>
                <property name="text">
                 <string>Redix Sort</string>
@@ -233,6 +266,9 @@ QPushButton:checked:pressed {
                  <height>40</height>
                 </size>
                </property>
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Sort elements with decreasing gap intervals&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
                <property name="styleSheet">
                 <string notr="true">QPushButton {
     background-color: qlineargradient(
@@ -255,7 +291,7 @@ QPushButton:hover {
 
 /* при нажатии */
 QPushButton:pressed {
-    background-color: #808080;
+    background-color: #4B4F56;
     color: #A6E22E;
     border: 1px solid #C0C0C0;
 }
@@ -270,7 +306,15 @@ QPushButton:checked {
 QPushButton:checked:pressed {
     background-color: #45A049;   /* чуть темнее зелёного */
     color: white;
-}</string>
+}
+
+QToolTip { 
+	background-color: #2B2F36; 
+	color: #E0E0E0; border: 1px solid #3A3F46; 
+	border-radius: 1px; 
+	padding: 4px 8px; 
+	font-size: 14px;
+ }</string>
                </property>
                <property name="text">
                 <string> Shell Sort </string>
@@ -301,6 +345,9 @@ QPushButton:checked:pressed {
                  <height>40</height>
                 </size>
                </property>
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Bidirectional bubble sort, moves largest and smallest elements each pass&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
                <property name="styleSheet">
                 <string notr="true">QPushButton {
     background-color: qlineargradient(
@@ -323,7 +370,7 @@ QPushButton:hover {
 
 /* при нажатии */
 QPushButton:pressed {
-    background-color: #808080;
+    background-color: #4B4F56;
     color: #A6E22E;
     border: 1px solid #C0C0C0;
 }
@@ -338,7 +385,15 @@ QPushButton:checked {
 QPushButton:checked:pressed {
     background-color: #45A049;   /* чуть темнее зелёного */
     color: white;
-}</string>
+}
+
+QToolTip { 
+	background-color: #2B2F36; 
+	color: #E0E0E0; border: 1px solid #3A3F46; 
+	border-radius: 1px; 
+	padding: 4px 8px; 
+	font-size: 14px;
+ }</string>
                </property>
                <property name="text">
                 <string>Shaker Sort</string>
@@ -362,6 +417,9 @@ QPushButton:checked:pressed {
                  <height>40</height>
                 </size>
                </property>
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Simple comparison sort, swaps out-of-order elements moving backward&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
                <property name="styleSheet">
                 <string notr="true">QPushButton {
     background-color: qlineargradient(
@@ -384,7 +442,7 @@ QPushButton:hover {
 
 /* при нажатии */
 QPushButton:pressed {
-    background-color: #808080;
+    background-color: #4B4F56;
     color: #A6E22E;
     border: 1px solid #C0C0C0;
 }
@@ -399,7 +457,15 @@ QPushButton:checked {
 QPushButton:checked:pressed {
     background-color: #45A049;   /* чуть темнее зелёного */
     color: white;
-}</string>
+}
+
+QToolTip { 
+	background-color: #2B2F36; 
+	color: #E0E0E0; border: 1px solid #3A3F46; 
+	border-radius: 1px; 
+	padding: 4px 8px; 
+	font-size: 14px;
+ }</string>
                </property>
                <property name="text">
                 <string>Gnome Sort</string>
@@ -423,6 +489,9 @@ QPushButton:checked:pressed {
                  <height>40</height>
                 </size>
                </property>
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Parallel comparison sort, alternates between odd-even and even-odd passes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
                <property name="styleSheet">
                 <string notr="true">QPushButton {
     background-color: qlineargradient(
@@ -445,7 +514,7 @@ QPushButton:hover {
 
 /* при нажатии */
 QPushButton:pressed {
-    background-color: #808080;
+    background-color: #4B4F56;
     color: #A6E22E;
     border: 1px solid #C0C0C0;
 }
@@ -460,7 +529,15 @@ QPushButton:checked {
 QPushButton:checked:pressed {
     background-color: #45A049;   /* чуть темнее зелёного */
     color: white;
-}</string>
+}
+
+QToolTip { 
+	background-color: #2B2F36; 
+	color: #E0E0E0; border: 1px solid #3A3F46; 
+	border-radius: 1px; 
+	padding: 4px 8px; 
+	font-size: 14px;
+ }</string>
                </property>
                <property name="text">
                 <string>Odd Even Sort</string>
@@ -488,6 +565,9 @@ QPushButton:checked:pressed {
                  <height>40</height>
                 </size>
                </property>
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Divide array, sort halves, then merge&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
                <property name="styleSheet">
                 <string notr="true">QPushButton {
     background-color: qlineargradient(
@@ -510,7 +590,7 @@ QPushButton:hover {
 
 /* при нажатии */
 QPushButton:pressed {
-    background-color: #808080;
+    background-color: #4B4F56;
     color: #A6E22E;
     border: 1px solid #C0C0C0;
 }
@@ -525,7 +605,15 @@ QPushButton:checked {
 QPushButton:checked:pressed {
     background-color: #45A049;   /* чуть темнее зелёного */
     color: white;
-}</string>
+}
+
+QToolTip { 
+	background-color: #2B2F36; 
+	color: #E0E0E0; border: 1px solid #3A3F46; 
+	border-radius: 1px; 
+	padding: 4px 8px; 
+	font-size: 14px;
+ }</string>
                </property>
                <property name="text">
                 <string>Merge Sort</string>
@@ -549,6 +637,9 @@ QPushButton:checked:pressed {
                  <height>40</height>
                 </size>
                </property>
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Partition array around pivot and sort recursively&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
                <property name="styleSheet">
                 <string notr="true">QPushButton {
     background-color: qlineargradient(
@@ -571,7 +662,7 @@ QPushButton:hover {
 
 /* при нажатии */
 QPushButton:pressed {
-    background-color: #808080;
+    background-color: #4B4F56;
     color: #A6E22E;
     border: 1px solid #C0C0C0;
 }
@@ -586,7 +677,15 @@ QPushButton:checked {
 QPushButton:checked:pressed {
     background-color: #45A049;   /* чуть темнее зелёного */
     color: white;
-}</string>
+}
+
+QToolTip { 
+	background-color: #2B2F36; 
+	color: #E0E0E0; border: 1px solid #3A3F46; 
+	border-radius: 1px; 
+	padding: 4px 8px; 
+	font-size: 14px;
+ }</string>
                </property>
                <property name="text">
                 <string>Quick Sort</string>
@@ -610,6 +709,9 @@ QPushButton:checked:pressed {
                  <height>40</height>
                 </size>
                </property>
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Build heap, then extract max/min repeatedly&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
                <property name="styleSheet">
                 <string notr="true">QPushButton {
     background-color: qlineargradient(
@@ -632,7 +734,7 @@ QPushButton:hover {
 
 /* при нажатии */
 QPushButton:pressed {
-    background-color: #808080;
+    background-color: #4B4F56;
     color: #A6E22E;
     border: 1px solid #C0C0C0;
 }
@@ -647,7 +749,15 @@ QPushButton:checked {
 QPushButton:checked:pressed {
     background-color: #45A049;   /* чуть темнее зелёного */
     color: white;
-}</string>
+}
+
+QToolTip { 
+	background-color: #2B2F36; 
+	color: #E0E0E0; border: 1px solid #3A3F46; 
+	border-radius: 1px; 
+	padding: 4px 8px; 
+	font-size: 14px;
+ }</string>
                </property>
                <property name="text">
                 <string>  Heap Sort  </string>
@@ -669,6 +779,9 @@ QPushButton:checked:pressed {
                  <height>40</height>
                 </size>
                </property>
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Swap adjacent elements until sorted&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
                <property name="styleSheet">
                 <string notr="true">QPushButton {
     background-color: qlineargradient(
@@ -691,7 +804,7 @@ QPushButton:hover {
 
 /* при нажатии */
 QPushButton:pressed {
-    background-color: #808080;
+    background-color: #4B4F56;
     color: #A6E22E;
     border: 1px solid #C0C0C0;
 }
@@ -706,7 +819,15 @@ QPushButton:checked {
 QPushButton:checked:pressed {
     background-color: #45A049;   /* чуть темнее зелёного */
     color: white;
-}</string>
+}
+
+QToolTip { 
+	background-color: #2B2F36; 
+	color: #E0E0E0; border: 1px solid #3A3F46; 
+	border-radius: 1px; 
+	padding: 4px 8px; 
+	font-size: 14px;
+ }</string>
                </property>
                <property name="text">
                 <string>  Bubble Sort  </string>
@@ -724,6 +845,9 @@ QPushButton:checked:pressed {
                  <height>40</height>
                 </size>
                </property>
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select minimum element and move to front&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
                <property name="styleSheet">
                 <string notr="true">QPushButton {
     background-color: qlineargradient(
@@ -746,7 +870,7 @@ QPushButton:hover {
 
 /* при нажатии */
 QPushButton:pressed {
-    background-color: #808080;
+    background-color: #4B4F56;
     color: #A6E22E;
     border: 1px solid #C0C0C0;
 }
@@ -761,7 +885,15 @@ QPushButton:checked {
 QPushButton:checked:pressed {
     background-color: #45A049;   /* чуть темнее зелёного */
     color: white;
-}</string>
+}
+
+QToolTip { 
+	background-color: #2B2F36; 
+	color: #E0E0E0; border: 1px solid #3A3F46; 
+	border-radius: 1px; 
+	padding: 4px 8px; 
+	font-size: 14px;
+ }</string>
                </property>
                <property name="text">
                 <string>Selection Sort</string>
@@ -779,6 +911,9 @@ QPushButton:checked:pressed {
                  <height>40</height>
                 </size>
                </property>
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Insert each element into its sorted position&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
                <property name="styleSheet">
                 <string notr="true">QPushButton {
     background-color: qlineargradient(
@@ -801,7 +936,7 @@ QPushButton:hover {
 
 /* при нажатии */
 QPushButton:pressed {
-    background-color: #808080;
+    background-color: #4B4F56;
     color: #A6E22E;
     border: 1px solid #C0C0C0;
 }
@@ -816,7 +951,15 @@ QPushButton:checked {
 QPushButton:checked:pressed {
     background-color: #45A049;   /* чуть темнее зелёного */
     color: white;
-}</string>
+}
+
+QToolTip { 
+	background-color: #2B2F36; 
+	color: #E0E0E0; border: 1px solid #3A3F46; 
+	border-radius: 1px; 
+	padding: 4px 8px; 
+	font-size: 14px;
+ }</string>
                </property>
                <property name="text">
                 <string>Insertion Sort </string>
@@ -895,7 +1038,7 @@ QPushButton:hover {
 
 /* при нажатии */
 QPushButton:pressed {
-    background-color: #808080;
+    background-color: #4B4F56;
     color: #A6E22E;
     border: 1px solid #C0C0C0;
 }
@@ -956,9 +1099,21 @@ QPushButton:hover {
 
 /* при нажатии */
 QPushButton:pressed {
-    background-color: #808080;
+    background-color: #4B4F56;
     color: #A6E22E;
     border: 1px solid #C0C0C0;
+}
+
+QPushButton:checked {
+    background-color: #4CAF50;   /* зелёный фон */
+    color: white;
+    border: 1px solid #C0C0C0;
+}
+
+/* pressed + checked — чтобы не перекрывался :checked при удержании */
+QPushButton:checked:pressed {
+    background-color: #45A049;   /* чуть темнее зелёного */
+    color: white;
 }</string>
                </property>
                <property name="text">
@@ -1005,7 +1160,7 @@ QPushButton:hover {
 
 /* при нажатии */
 QPushButton:pressed {
-    background-color: #808080;
+    background-color: #4B4F56;
     color: #A6E22E;
     border: 1px solid #C0C0C0;
 }

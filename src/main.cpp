@@ -5,6 +5,8 @@
 #include "mainwindow.h"
 #include <QApplication>
 #include <QIcon>
+#include <QFile>
+#include <QDebug>
 
 int main(int argc, char *argv[])
 {
