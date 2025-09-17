@@ -5,7 +5,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QTimer>
-#include <QThread>
 #include <QButtonGroup>
 #include <random>
 #include <algorithm>
@@ -45,14 +44,17 @@ void MainWindow::onStartButton() {
     ui->startBtn->setChecked(true);
     ui->stopBtn->setChecked(false);
 
-    QThread* sortThread = QThread::create([this]{
-        currentSorter->sortedVec(data, delayMs, [this](const std::vector<int>& step, int i, int j) {
-            if (stopRequested) return;
-            QMetaObject::invokeMethod(canvas, [this, step, i, j]{
-                canvas->setData(step, i, j);
-            });
-            QThread::msleep(delayMs);
-        });
+    if (sortThread) return;
+
+    sortThread = QThread::create([this]{
+        currentSorter->sortedVec(data, delayMs,
+            [this](const std::vector<int>& step, int i, int j) {
+                QMetaObject::invokeMethod(canvas, [this, step, i, j]{
+                    canvas->setData(step, i, j);
+                });
+            },
+            stopRequested
+        );
 
         if (!stopRequested) {
             QMetaObject::invokeMethod(canvas, [this]{
@@ -60,8 +62,11 @@ void MainWindow::onStartButton() {
             });
         }
     });
-    sortThread->start();
+
     connect(sortThread, &QThread::finished, sortThread, &QObject::deleteLater);
+    connect(sortThread, &QThread::finished, [this]{ sortThread = nullptr; });
+
+    sortThread->start();
 }
 
 void MainWindow::onShuffleButton() {
@@ -90,18 +95,34 @@ void MainWindow::initButtons() {
     connect(ui->arrSizeSlider,  &QSlider::valueChanged, this, &MainWindow::onArraySizeChanges);
     connect(ui->delaySlider,    &QSlider::valueChanged, this, &MainWindow::onDelayChanges);
 
-    connect(ui->bubbleBtn,      &QPushButton::clicked, this, [this](){ currentSorter = &bubbleSorter;    });
-    connect(ui->selectionBtn,   &QPushButton::clicked, this, [this](){ currentSorter = &selectionSorter; });
-    connect(ui->insertionBtn,   &QPushButton::clicked, this, [this](){ currentSorter = &insertionSorter; });
-    connect(ui->shakerBtn,      &QPushButton::clicked, this, [this](){ currentSorter = &shakerSorter;    });
-    connect(ui->gnomeBtn,       &QPushButton::clicked, this, [this](){ currentSorter = &gnomeSorter;     });
-    connect(ui->oddEvenBtn,     &QPushButton::clicked, this, [this](){ currentSorter = &oddEvenSorter;   });
-    connect(ui->mergeBtn,       &QPushButton::clicked, this, [this](){ currentSorter = &mergeSorter;     });
-    connect(ui->quickBtn,       &QPushButton::clicked, this, [this](){ currentSorter = &quickSorter;     });
-    connect(ui->heapBtn,        &QPushButton::clicked, this, [this](){ currentSorter = &heapSorter;      });
-    connect(ui->countingBtn,    &QPushButton::clicked, this, [this](){ currentSorter = &countingSorter;  });
-    //connect(ui->radixBtn,       &QPushButton::clicked, this, [this](){ currentSorter = &; });
-    connect(ui->shellBtn,       &QPushButton::clicked, this, [this](){ currentSorter = &shellSorter;     });
+    connect(ui->bubbleBtn,      &QPushButton::clicked, this, [this](){ switchSorter(&bubbleSorter);    });
+    connect(ui->selectionBtn,   &QPushButton::clicked, this, [this](){ switchSorter(&selectionSorter); });
+    connect(ui->insertionBtn,   &QPushButton::clicked, this, [this](){ switchSorter(&insertionSorter); });
+    connect(ui->shakerBtn,      &QPushButton::clicked, this, [this](){ switchSorter(&shakerSorter);    });
+    connect(ui->gnomeBtn,       &QPushButton::clicked, this, [this](){ switchSorter(&gnomeSorter);     });
+    connect(ui->oddEvenBtn,     &QPushButton::clicked, this, [this](){ switchSorter(&oddEvenSorter);   });
+    connect(ui->mergeBtn,       &QPushButton::clicked, this, [this](){ switchSorter(&mergeSorter);     });
+    connect(ui->quickBtn,       &QPushButton::clicked, this, [this](){ switchSorter(&quickSorter);     });
+    connect(ui->heapBtn,        &QPushButton::clicked, this, [this](){ switchSorter(&heapSorter);      });
+    connect(ui->countingBtn,    &QPushButton::clicked, this, [this](){ switchSorter(&countingSorter);  });
+    //connect(ui->radixBtn,       &QPushButton::clicked, this, [this](){ switchSorter(&); });
+    connect(ui->shellBtn,       &QPushButton::clicked, this, [this](){ switchSorter(&shellSorter);     });
+}
+
+void MainWindow::switchSorter(SortAlgorithm<int>* sorter) {
+    ui->startBtn->setChecked(false);
+    stopRequested = true;
+
+    if (sortThread) {
+        connect(sortThread, &QThread::finished, this, [this, sorter]{
+            sortThread = nullptr;
+            currentSorter = sorter;
+            shuffleData(ui->arrSizeSlider->value());
+        }, Qt::QueuedConnection);
+    } else {
+        currentSorter = sorter;
+        shuffleData(ui->arrSizeSlider->value());
+    }
 }
 
 void MainWindow::buttonsGroup() {

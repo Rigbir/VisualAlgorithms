@@ -8,20 +8,23 @@
 
 template <typename T>
 void MergeSort<T>::sortedVec(std::vector<T>& vec, int delayMs,
-                             std::function<void(std::vector<T>&, int i, int j)> stepCallBack) const {
-    mergeSort(vec.begin(), vec.end(), vec, delayMs, stepCallBack);
+                             std::function<void(std::vector<T>&, int i, int j)> stepCallBack,
+                             const std::atomic_bool& stopRequested) const {
+    mergeSort(vec.begin(), vec.end(), vec, delayMs, stepCallBack, stopRequested);
 }
 
 template <typename T>
 template <typename RandomIterator>
 void MergeSort<T>::mergeSort(RandomIterator begin, RandomIterator end, std::vector<T>& vec, int delayMs,
-                             std::function<void(std::vector<T>&, int i, int j)> stepCallBack) {
+                             std::function<void(std::vector<T>&, int i, int j)> stepCallBack,
+                             const std::atomic_bool& stopRequested) {
 
     if (std::next(begin) == end) return;
+    if (stopRequested) return;
 
     auto mid = begin + (end - begin) / 2;
-    mergeSort(begin, mid, vec, delayMs, stepCallBack);
-    mergeSort(mid, end, vec, delayMs, stepCallBack);
+    mergeSort(begin, mid, vec, delayMs, stepCallBack, stopRequested);
+    mergeSort(mid, end, vec, delayMs, stepCallBack, stopRequested);
 
     using ValueType = typename std::iterator_traits<RandomIterator>::value_type;
     std::vector<ValueType> temp;

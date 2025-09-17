@@ -7,7 +7,8 @@
 
 template <typename T>
 void SelectionSort<T>::sortedVec(std::vector<T>& vec, int delayMs,
-                                 std::function<void(std::vector<T>&, int i, int j)> stepCallBack) const {
+                                 std::function<void(std::vector<T>&, int i, int j)> stepCallBack,
+                                 const std::atomic_bool& stopRequested) const {
 
     for (size_t i = 0; i < vec.size() - 1; ++i) {
         size_t minIndex = i;

@@ -7,14 +7,17 @@
 
 template<typename T>
 void OddEvenSort<T>::sortedVec(std::vector<T>& vec, int delayMs,
-                               std::function<void(std::vector<T>&, int i, int j)> stepCallBack) const {
+                               std::function<void(std::vector<T>&, int i, int j)> stepCallBack,
+                               const std::atomic_bool& stopRequested) const {
 
     bool isSorted = false;
 
     while (!isSorted) {
         isSorted = true;
+        if (stopRequested) return;
 
         for (size_t i = 1; i + 1 < vec.size(); i += 2) {
+            if (stopRequested) return;
             if (vec[i] > vec[i + 1]) {
                 std::swap(vec[i], vec[i + 1]);
                 isSorted = false;
@@ -24,6 +27,7 @@ void OddEvenSort<T>::sortedVec(std::vector<T>& vec, int delayMs,
         }
 
         for (size_t i = 0; i + 1 < vec.size(); i += 2) {
+            if (stopRequested) return;
             if (vec[i] > vec[i + 1]) {
                 std::swap(vec[i], vec[i + 1]);
                 isSorted = false;

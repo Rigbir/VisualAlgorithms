@@ -11,6 +11,7 @@ template <typename T>
 class SortAlgorithm {
 public:
     virtual void sortedVec(std::vector<T>& vec, int delayMs,
-                           std::function<void(std::vector<T>&, int i, int j)> stepCallBack) const = 0;
+                           std::function<void(std::vector<T>&, int i, int j)> stepCallBack,
+                           const std::atomic_bool& stopRequested) const = 0;
     virtual ~SortAlgorithm() = default;
 };

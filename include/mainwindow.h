@@ -6,6 +6,8 @@
 #include <QMainWindow>
 #include <QPushButton>
 #include <QSlider>
+#include <QThread>
+
 #include "SortCanvas.h"
 #include "SortAlgorithm.h"
 #include "BubbleSort.h"
@@ -30,6 +32,7 @@ public:
 
     void initButtons();
     void buttonsGroup();
+    void switchSorter(SortAlgorithm<int>* sorter);
 
     ~MainWindow();
 
@@ -42,6 +45,7 @@ private slots:
 
 private:
     SortCanvas* canvas;
+    QThread* sortThread = nullptr;
 
     SortAlgorithm<int>* currentSorter = nullptr;
     BubbleSort<int>     bubbleSorter;
@@ -61,7 +65,7 @@ private:
     QPushButton* stopButton;
 
     int delayMs = 10;
-    bool stopRequested = false;
+    std::atomic_bool stopRequested = false;
     std::vector<int> data;
 
     void updateCanvas();

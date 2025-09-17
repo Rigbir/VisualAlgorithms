@@ -7,29 +7,29 @@
 
 template<typename T>
 void CountingSort<T>::sortedVec(std::vector<T>& vec, int delayMs,
-                                std::function<void(std::vector<T>&, int i, int j)> stepCallBack) const {
-
-    std::vector<T> temp(vec.size() + 1, 0);
+                                std::function<void(std::vector<T>&, int i, int j)> stepCallBack,
+                                const std::atomic_bool& stopRequested) const {
 
     T minElement = *std::min_element(vec.begin(), vec.end());
     T maxElement = *std::max_element(vec.begin(), vec.end());
 
-    for (const auto x : vec) {
-        ++temp[x];
-    }
+    size_t range = maxElement - minElement + 1;
+    std::vector<T> count(range, 0);
 
-    for (size_t i = 1; i < temp.size(); ++i) {
-        temp[i] += temp[i - i];
+    for (const auto x : vec) {
+        ++count[x - minElement];
     }
 
     size_t j = 0;
-    for (int i = minElement; i <= maxElement; ++i) {
-        while (temp[i] > 0) {
-           vec[j] = i;
-            ++j;
-            --temp[i];
-            stepCallBack(vec, i, j);
+    for (int i = 0; i < range; ++i) {
+        if (stopRequested) return;
+        while (count[i] > 0) {
+            if (stopRequested) return;
+            vec[j] = i + minElement;
+            stepCallBack(vec, i + minElement, j);
             QThread::msleep(delayMs);
+            ++j;
+            --count[i];
         }
     }
 }

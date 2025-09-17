@@ -9,7 +9,8 @@ template <typename T>
 class GnomeSort final : public SortAlgorithm<T> {
 public:
     void sortedVec(std::vector<T>& vec, int delayMs,
-                   std::function<void(std::vector<T>&, int i, int j)> stepCallBack) const override;
+                   std::function<void(std::vector<T>&, int i, int j)> stepCallBack,
+                   const std::atomic_bool& stopRequested) const override;
 };
 
 #include "GnomeSort.tpp"
