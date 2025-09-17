@@ -18,8 +18,7 @@ private:
                const std::atomic_bool& stopRequested) const;
 
     int partition(std::vector<T>& vec, int low, int high, int delayMs,
-                  std::function<void(std::vector<T>&, int i, int j)> stepCallBack,
-                  const std::atomic_bool& stopRequested) const;
+                  std::function<void(std::vector<T>&, int i, int j)> stepCallBack) const;
 };
 
 #include "QuickSort.tpp"

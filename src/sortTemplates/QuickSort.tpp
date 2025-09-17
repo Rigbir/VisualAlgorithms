@@ -28,8 +28,7 @@ void QuickSort<T>::quick(std::vector<T>& vec, const int low, const int high, int
 
 template <typename T>
 int QuickSort<T>::partition(std::vector<T>& vec, const int low, const int high, int delayMs,
-                            std::function<void(std::vector<T>&, int i, int j)> stepCallBack,
-                            const std::atomic_bool& stopRequested) const {
+                            std::function<void(std::vector<T>&, int i, int j)> stepCallBack) const {
     T pivot = vec[high];
     size_t i = low - 1;
 
