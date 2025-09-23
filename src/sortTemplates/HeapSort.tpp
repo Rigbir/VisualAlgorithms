@@ -6,7 +6,7 @@
 #include <QThread>
 
 template <typename T>
-void HeapSort<T>::sortedVec(std::vector<T>& vec, int delayMs,
+void HeapSort<T>::sortedVec(std::vector<T>& vec, int& delayMs,
                             std::function<void(std::vector<T>&, int i, int j)> stepCallBack,
                             const std::atomic_bool& stopRequested) const {
 

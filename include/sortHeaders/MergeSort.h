@@ -8,13 +8,13 @@
 template <typename T>
 class MergeSort final : public SortAlgorithm<T> {
 public:
-    void sortedVec(std::vector<T>& vec, int delayMs,
+    void sortedVec(std::vector<T>& vec, int& delayMs,
                    std::function<void(std::vector<T>&, int i, int j)> stepCallBack,
                    const std::atomic_bool& stopRequested) const override;
 
 private:
     template <typename RandomIterator>
-    static void mergeSort(RandomIterator begin, RandomIterator end, std::vector<T>& vec, int delayMs,
+    static void mergeSort(RandomIterator begin, RandomIterator end, std::vector<T>& vec, int& delayMs,
                           std::function<void(std::vector<T>&, int i, int j)> stepCallBack,
                           const std::atomic_bool& stopRequested);
 

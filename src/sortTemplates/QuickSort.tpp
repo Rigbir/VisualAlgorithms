@@ -6,7 +6,7 @@
 #include <QThread>
 
 template <typename T>
-void QuickSort<T>::sortedVec(std::vector<T>& vec, int delayMs,
+void QuickSort<T>::sortedVec(std::vector<T>& vec, int& delayMs,
                              std::function<void(std::vector<T>&, int i, int j)> stepCallBack,
                              const std::atomic_bool& stopRequested) const {
 
@@ -15,7 +15,7 @@ void QuickSort<T>::sortedVec(std::vector<T>& vec, int delayMs,
 }
 
 template<typename T>
-void QuickSort<T>::quick(std::vector<T>& vec, const int low, const int high, int delayMs,
+void QuickSort<T>::quick(std::vector<T>& vec, const int low, const int high, int& delayMs,
                          std::function<void(std::vector<T>&, int i, int j)> stepCallBack,
                          const std::atomic_bool& stopRequested) const {
     if (low < high) {
@@ -27,7 +27,7 @@ void QuickSort<T>::quick(std::vector<T>& vec, const int low, const int high, int
 }
 
 template <typename T>
-int QuickSort<T>::partition(std::vector<T>& vec, const int low, const int high, int delayMs,
+int QuickSort<T>::partition(std::vector<T>& vec, const int low, const int high, int& delayMs,
                             std::function<void(std::vector<T>&, int i, int j)> stepCallBack) const {
     T pivot = vec[high];
     size_t i = low - 1;

@@ -86,6 +86,7 @@ void MainWindow::onArraySizeChanges(size_t size) {
 void MainWindow::onDelayChanges(size_t delay) {
     ui->delayLabel->setText(QString::number(delay) + " ms");
     this->delayMs = delay;
+    qDebug() << "DELAY: " << delayMs;
 }
 
 void MainWindow::initButtons() {
@@ -105,7 +106,7 @@ void MainWindow::initButtons() {
     connect(ui->quickBtn,       &QPushButton::clicked, this, [this](){ switchSorter(&quickSorter);     });
     connect(ui->heapBtn,        &QPushButton::clicked, this, [this](){ switchSorter(&heapSorter);      });
     connect(ui->countingBtn,    &QPushButton::clicked, this, [this](){ switchSorter(&countingSorter);  });
-    //connect(ui->radixBtn,       &QPushButton::clicked, this, [this](){ switchSorter(&); });
+    connect(ui->radixBtn,       &QPushButton::clicked, this, [this](){ switchSorter(&radixSorter);     });
     connect(ui->shellBtn,       &QPushButton::clicked, this, [this](){ switchSorter(&shellSorter);     });
 }
 

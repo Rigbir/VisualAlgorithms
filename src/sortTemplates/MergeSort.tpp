@@ -7,7 +7,7 @@
 #include <iterator>
 
 template <typename T>
-void MergeSort<T>::sortedVec(std::vector<T>& vec, int delayMs,
+void MergeSort<T>::sortedVec(std::vector<T>& vec, int& delayMs,
                              std::function<void(std::vector<T>&, int i, int j)> stepCallBack,
                              const std::atomic_bool& stopRequested) const {
     mergeSort(vec.begin(), vec.end(), vec, delayMs, stepCallBack, stopRequested);
@@ -15,7 +15,7 @@ void MergeSort<T>::sortedVec(std::vector<T>& vec, int delayMs,
 
 template <typename T>
 template <typename RandomIterator>
-void MergeSort<T>::mergeSort(RandomIterator begin, RandomIterator end, std::vector<T>& vec, int delayMs,
+void MergeSort<T>::mergeSort(RandomIterator begin, RandomIterator end, std::vector<T>& vec, int& delayMs,
                              std::function<void(std::vector<T>&, int i, int j)> stepCallBack,
                              const std::atomic_bool& stopRequested) {
 

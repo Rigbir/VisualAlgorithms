@@ -6,11 +6,17 @@
 #include "SortAlgorithm.h"
 
 template <typename T>
-class BubbleSort final : public SortAlgorithm<T> {
+class RadixSort final : public SortAlgorithm<T> {
 public:
     void sortedVec(std::vector<T>& vec, int& delayMs,
                    std::function<void(std::vector<T>&, int i, int j)> stepCallBack,
                    const std::atomic_bool& stopRequested) const override;
+
+private:
+    void counting(std::vector<T>& vec, int exp,
+                  std::function<void(std::vector<T>&, int, int)> stepCallBack,
+                  int& delayMs,
+                  const std::atomic_bool& stopRequested) const;
 };
 
-#include "BubbleSort.tpp"
+#include "RadixSort.tpp"
