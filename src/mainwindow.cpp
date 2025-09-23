@@ -86,7 +86,6 @@ void MainWindow::onArraySizeChanges(size_t size) {
 void MainWindow::onDelayChanges(size_t delay) {
     ui->delayLabel->setText(QString::number(delay) + " ms");
     this->delayMs = delay;
-    qDebug() << "DELAY: " << delayMs;
 }
 
 void MainWindow::initButtons() {
